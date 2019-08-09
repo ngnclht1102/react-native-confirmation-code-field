@@ -140,6 +140,7 @@ class ConfirmationCodeInput extends PureComponent<Props, State> {
           codeValue,
         },
         () => {
+          this.props.onChanged && this.props.onChanged(codeValue);
           if (this.getCodeLength() === codeLength) {
             if (blurOnSubmit) {
               this.blur();
@@ -285,7 +286,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   ConfirmationCodeInput.propTypes = {
     onFulfill: PropTypes.func.isRequired,
-
+    onChanged: PropTypes.func,
     normalizeCode: PropTypes.func,
     activeColor: PropTypes.string,
     autoFocus: PropTypes.bool,
